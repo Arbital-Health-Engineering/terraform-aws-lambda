@@ -167,6 +167,12 @@ resource "aws_lambda_function" "this" {
     aws_iam_role_policy_attachment.additional_many,
     aws_iam_role_policy_attachment.additional_one,
   ]
+
+  lifecycle {
+    ignore_changes = [
+      image_uri,
+    ]
+  }
 }
 
 resource "aws_lambda_layer_version" "this" {
